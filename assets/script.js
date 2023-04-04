@@ -51,3 +51,43 @@ checkAnswer(questionIndex, i);
 answerButtonsEl.appendChild(button);
 }
 }
+
+function checkAnswer(questionIndex, answerIndex) {
+    const question = questions[questionIndex];
+    if (answerIndex === question.answerIndex) {
+    score++;
+    resultTextEl.textContent = "Correct!";
+    } else {
+    quizTimer -= 10;
+    resultTextEl.textContent = "Incorrect!";
+    }
+    resultTextEl.style.display = "block";
+    setTimeout(() => {
+    resultTextEl.style.display = "none";
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+    displayQuestion(currentQuestionIndex);
+    } else {
+    endQuiz();
+    }
+    }, 1000);
+    }
+    
+    function endQuiz() {
+        clearInterval(quizInterval);
+        quizContainerEl.innerHTML = `<h2>Your final score is ${score}</h2>
+          <form>
+            <label for="initials">Enter your initials:</label>
+            <input type="text" id="initials" name="initials" required>
+            <button type="submit">Save Score</button>
+          </form>
+        `;
+      }
+      
+      function updateTimerDisplay() {
+        timerTextEl.textContent = `Time: ${quizTimer}`;
+      }
+      
+      updateTimerDisplay();
+      startQuiz();
+      
