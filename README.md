@@ -5,7 +5,7 @@
 This is a timed quiz application that allows coding boot camp students to test their knowledge of JavaScript fundamentals and store their high scores.
 
 ## Usage
-HTML, CSS, Javascript, Blender
+HTML, CSS, Javascript
 
 ## Installation
 download github repository
